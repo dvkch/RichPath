@@ -16,9 +16,9 @@ import com.richpath.util.XmlParser
 import java.io.IOException
 import kotlin.math.min
 
-open class RichPathView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : AppCompatImageView(context, attrs, defStyleAttr) {
+open class RichPathView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : AppCompatImageView(context, attrs, defStyleAttr) {
 
-    constructor(context: Context?, attrs: AttributeSet?): this(context, attrs, 0)
+    constructor(context: Context, attrs: AttributeSet?): this(context, attrs, 0)
 
     private lateinit var vector: Vector
     private var richPathDrawable: RichPathDrawable? = null
@@ -71,7 +71,6 @@ open class RichPathView(context: Context?, attrs: AttributeSet?, defStyleAttr: I
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        val vector = vector ?: return
         val desiredWidth = vector.width
         val desiredHeight = vector.height
 
