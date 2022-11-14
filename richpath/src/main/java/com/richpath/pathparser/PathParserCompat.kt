@@ -168,20 +168,20 @@ object PathParserCompat {
 
     private fun nextStart(s: String, end: Int): Int {
         var c: Char
-        var end = end
-        while (end < s.length) {
-            c = s[end]
+        var endVar = end
+        while (endVar < s.length) {
+            c = s[endVar]
             // Note that 'e' or 'E' are not valid path commands, but could be
             // used for floating point numbers' scientific notation.
             // Therefore, when searching for next command, we should ignore 'e'
             // and 'E'.
             if (((c - 'A') * (c - 'Z') <= 0 || (c - 'a') * (c - 'z') <= 0)
                     && c != 'e' && c != 'E') {
-                return end
+                return endVar
             }
-            end++
+            endVar++
         }
-        return end
+        return endVar
     }
 
     private fun addNode(list: ArrayList<PathDataNode>, cmd: Char, params: FloatArray) {

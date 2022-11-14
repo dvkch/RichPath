@@ -367,8 +367,8 @@ class PathDataNode(var type: Char, val params: FloatArray) {
             // Maximum of 45 degrees per cubic Bezier segment
             val numSegments = ceil(abs(sweep * 4 / Math.PI)).toInt()
 
-            var e1x = e1x
-            var e1y = e1y
+            var e1xVar = e1x
+            var e1yVar = e1y
             var eta1 = start
             val cosTheta = cos(theta)
             val sinTheta = sin(theta)
@@ -388,8 +388,8 @@ class PathDataNode(var type: Char, val params: FloatArray) {
                 val ep2y = -a * sinTheta * sinEta2 + b * cosTheta * cosEta2
                 val tanDiff2 = tan((eta2 - eta1) / 2)
                 val alpha = sin(eta2 - eta1) * (sqrt(4 + 3 * tanDiff2 * tanDiff2) - 1) / 3
-                val q1x = e1x + alpha * ep1x
-                val q1y = e1y + alpha * ep1y
+                val q1x = e1xVar + alpha * ep1x
+                val q1y = e1yVar + alpha * ep1y
                 val q2x = e2x - alpha * ep2x
                 val q2y = e2y - alpha * ep2y
 
@@ -402,8 +402,8 @@ class PathDataNode(var type: Char, val params: FloatArray) {
                         e2x.toFloat(),
                         e2y.toFloat())
                 eta1 = eta2
-                e1x = e2x
-                e1y = e2y
+                e1xVar = e2x
+                e1yVar = e2y
                 ep1x = ep2x
                 ep1y = ep2y
             }
